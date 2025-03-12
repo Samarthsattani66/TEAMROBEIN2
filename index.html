@@ -18,6 +18,7 @@
       min-height: 100%;
       max-height: 100%;
     }
+
     /* Popup */
     .popup {
       position: fixed;
@@ -42,6 +43,7 @@
       z-index: 9999;
       position: relative;
     }
+
     /* Close (X) Button */
     .popup .close-btn {
       position: absolute;
@@ -54,16 +56,19 @@
       font-weight: bold;
       cursor: pointer;
     }
+
     .popup h2 {
       color: yellow;
       font-size: 18px;
       margin-bottom: 10px;
       margin-top: 15px;
     }
+
     .popup p {
       font-size: 14px;
       margin-bottom: 20px;
     }
+
     /* Button Styling */
     .popup button {
       width: 90%;
@@ -77,6 +82,7 @@
       text-transform: uppercase;
       box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.3);
     }
+
     /* Glowing Red Button */
     .join-btn {
       background: linear-gradient(45deg, #ff0000, #cc0000);
@@ -84,20 +90,24 @@
       box-shadow: 0 0 10px red;
       animation: glow 1s infinite alternate;
     }
+
     @keyframes glow {
       0% { box-shadow: 0 0 10px red; }
       100% { box-shadow: 0 0 20px red; }
     }
+
     .join-btn:hover {
       background: linear-gradient(45deg, #cc0000, #990000);
       transform: scale(1.05);
     }
+
     /* Gray Button */
     .joined-btn {
       background: linear-gradient(45deg, #444, #333);
       color: white;
       margin-top: 10px;
     }
+
     .joined-btn:hover {
       background: linear-gradient(45deg, #555, #444);
       transform: scale(1.05);
@@ -106,27 +116,31 @@
 </head>
 <body>
 
+  <!-- JWPlayer Video -->
   <div id="jwplayerDiv"></div>
 
   <!-- Telegram Popup -->
   <div class="popup" id="telegramPopup">
     <!-- Close (X) Button -->
     <button class="close-btn" onclick="closePopup()">×</button>
-    
     <h2>Support Us!</h2>
     <p>Join our Telegram channel <b>@teamrohitoffical45</b> for more updates.</p>
     <button class="join-btn" onclick="joinTelegram()">Join Now and Support Us</button>
     <button class="joined-btn" onclick="closePopup()">Already Joined</button>
   </div>
 
+  <!-- JWPlayer & Popup Logic -->
   <script>
-    // JWPlayer Setup
+    // JWPlayer Setup with Fast Load Optimizations
     jwplayer("jwplayerDiv").setup({
       file: "https://a36aivottlinear-a.akamaihd.net/OTTB/syd-nitro/live/clients/dash/enc/6fbnr3ei4b/out/v1/57d2ae96a4cc4230881cd801b389edf6/cenc.mpd",
       type: "dash",
       autostart: true,
+      preload: "auto",
       stretching: "uniform",
       width: "100%",
+      bufferlength: 5, // Optimize buffering
+      liveSyncDuration: 3, // Stay close to live (if supported)
       drm: {
         clearkey: {
           keyId: "9afd72f20573001c23672d2158892a5f",
@@ -135,13 +149,13 @@
       }
     });
 
-    // Open Telegram and close popup
+    // Function to open Telegram and close popup
     function joinTelegram() {
       window.open('https://t.me/+Abr6OELq5KZkZjNl', '_blank');
-      closePopup(); // Close popup after opening link
+      closePopup();
     }
 
-    // Close popup function
+    // Function to close popup
     function closePopup() {
       document.getElementById('telegramPopup').style.display = 'none';
     }
@@ -149,4 +163,5 @@
 
 </body>
 </html>
+
 
