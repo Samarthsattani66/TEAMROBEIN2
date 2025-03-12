@@ -39,6 +39,7 @@
       align-items: center;
       backdrop-filter: blur(10px);
       border: 2px solid rgba(255, 255, 255, 0.2);
+      z-index: 9999;
     }
     .popup h2 {
       color: yellow;
@@ -97,15 +98,14 @@
   <div class="popup" id="telegramPopup">
     <h2>Support Us!</h2>
     <p>Join our Telegram channel <b>@teamrohitoffical45</b> for more updates.</p>
-    <button class="join-btn" onclick="window.open('https://t.me/+Abr6OELq5KZkZjNl', '_blank'); closePopup();">Join Now and Support Us</button>
+    <button class="join-btn" onclick="joinTelegram()">Join Now and Support Us</button>
     <button class="joined-btn" onclick="closePopup()">Already Joined</button>
   </div>
 
   <script>
+    // JWPlayer Setup
     jwplayer("jwplayerDiv").setup({
-      file: "https://a36aivottlinear-a.akamaihd.net/OTTB/syd-nitro/live/clients/dash/enc/6fbnr3ei4b/out/v1/57d2ae96a4cc4230881cd801b389edf6/cenc.mpd
-
-",
+      file: "https://a36aivottlinear-a.akamaihd.net/OTTB/syd-nitro/live/clients/dash/enc/6fbnr3ei4b/out/v1/57d2ae96a4cc4230881cd801b389edf6/cenc.mpd",
       type: "dash",
       autostart: true,
       stretching: "uniform",
@@ -118,6 +118,13 @@
       }
     });
 
+    // Function to open Telegram and close popup
+    function joinTelegram() {
+      window.open('https://t.me/+Abr6OELq5KZkZjNl', '_blank');
+      closePopup();
+    }
+
+    // Function to close the popup
     function closePopup() {
       document.getElementById("telegramPopup").style.display = "none";
     }
